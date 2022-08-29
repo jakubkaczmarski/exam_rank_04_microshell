@@ -6,7 +6,7 @@
 /*   By: jkaczmar <jkaczmar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 13:44:32 by jkaczmar          #+#    #+#             */
-/*   Updated: 2022/08/29 14:27:13 by jkaczmar         ###   ########.fr       */
+/*   Updated: 2022/08/29 14:50:08 by jkaczmar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int ft_strncmp(char *s1, char *s2)
 }
 
 
-int main(int argc, char **argv)
+int main(int argc, char **argv, char **env)
 {
     int i = 1;
     while(i < argc)
@@ -48,6 +48,12 @@ int main(int argc, char **argv)
         }else if(ft_strncmp(argv[i], "|") == 0)
         {
             printf("Pipe detected\n");
+        }else{
+            printf("%s\n", argv[i]);
+            if(execve(argv[i], &argv[i], env))
+            {
+                printf("Zium\n");
+            };
         }
         i++;
     }
