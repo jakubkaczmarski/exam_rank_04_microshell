@@ -6,7 +6,7 @@
 /*   By: jkaczmar <jkaczmar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 13:44:32 by jkaczmar          #+#    #+#             */
-/*   Updated: 2022/08/29 14:50:08 by jkaczmar         ###   ########.fr       */
+/*   Updated: 2022/08/29 14:53:14 by jkaczmar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ int main(int argc, char **argv, char **env)
             printf("Pipe detected\n");
         }else{
             printf("%s\n", argv[i]);
-            if(execve(argv[i], &argv[i], env))
+            if(execve(argv[i], &argv[i], env) < 0)
             {
-                printf("Zium\n");
+                write(2, "error: cannot execute", 22);
             };
         }
         i++;
